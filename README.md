@@ -21,7 +21,8 @@ name              | definition                    | comment
 `name-key`       | `/[^.\s]+/`
 `partial`        | ( '<' | '>' ) ( `name-space` '.' )? `partial-name` ( '(' `argument-list`? ')' )?
 `argument-list`  | `argument` ( ',' `argument` )*
-`argument`       | '"' `/[^"\\]*\|/`
+`argument`       | `/"([^"\\]*\|\\.)*"/` | `/0(x[0-9A-Fa-f]+|o[0-7]+|b[0-1]+])/`
+                 | \| `/-?\d+(\.\d+)?/` | value-key
 `end-mark`       |  '}'     | end token [default '}']
 
 
