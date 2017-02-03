@@ -3,27 +3,26 @@ a light rendering template api which features placeholders, partials, blocks, bl
 
 == Syntax:
 
-`template-input` =>  ( literal? placeholder )* literal?
-
-`placeholder`    =>  begin-mark type? rendering? values-key? partial? end-mark
-
-`begin-mark`     =>  '{'     # begin token [default '{']
-
-`type`           =>  '[' `block-name`?   # begin flow block
-                 | '@[' `block-name`?  # begin define block
-                 | '@' `block-name`?   # reference previously defined block
-                 | '![' `block-name`?  # begin else block
-                 | ']' `block-name`?   # end block
-
-`values-key`     =>  `name-key`? ( '.' `name-key`? )+
-
-`end-mark`       =>  '}'     # end token [default '}']
+name              | definition                    | comment
+----------------- | ----------------------------- | ---------------
+`template-input` |  ( literal? placeholder )* literal? |
+`placeholder`    |  begin-mark type? rendering? values-key? partial? end-mark |
+`begin-mark`     |  '{'     | begin token [default '{']
+`type`           |  '[' `block-name`?   | begin flow block
+ |                 \| '@[' `block-name`?  | begin define block
+ |                 \| '@' `block-name`?   | reference previously defined block
+ |                 \| '![' `block-name`?  | begin else block
+ |                 \| ']' `block-name`?   | end block
+`values-key`     |  `name-key`? ( '.' `name-key`? )+
+`block-name`     | /[\w-]+/
+`name-key`       | /[^.\s]+/
+`end-mark`       |  '}'     | end token [default '}']
 
 == Examples:
 
 `Hello, {name}`      # "Hello world" for values = { name: 'world' }
 
-`1 {&comp} 2`       # "1 &lt; 2" for values = { comp: 1 < 2 }
+`1 {&comp} 2`       # "1 \&lt; 2" for values = { comp: 1 < 2 }
 
 `name={%value}`     # "name=%20padded%20" for values = { value: " padded " }
 
