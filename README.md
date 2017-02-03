@@ -1,7 +1,7 @@
 # node-templite
 a light rendering template api which features placeholders, partials, blocks, block flow and rewndering for urls, markdown and markup. Based ib LaughingSun's Templite syntax, available in many flavors for many platforms.  See (coming soon) for implementations, documentation, details and add-ons.
 
-== Syntax:
+## Syntax:
 
 name              | definition                    | comment
 ----------------- | ----------------------------- | ---------------
@@ -26,7 +26,7 @@ name              | definition                    | comment
 
 
 
-== Examples:
+## Examples:
 
 `Hello, {name}`      # "Hello world" for values = { name: 'world' }
 
@@ -46,7 +46,7 @@ you can use the {[# for if block flow because it basically takes the length,
 which will be undefined or zero if it is undefined or has no content or 
 items.
 
-=== Advanced - defined blocks
+### Advanced - defined blocks
 ```
 {@[show_rows rows}
  {![#.}no rows{]}
@@ -74,19 +74,19 @@ row1
 row2
 ```
 
-== install
+## install
 
 `npm install node-templite` or `npm install -g node-templite`
 
 or clone from https://github.com/LaughingSun/node-templite.git
 
-== cli usage (requires global install or full path, execute with `node`)
+## cli usage (requires global install or full path, execute with `node`)
 
 ```
 $ node-templite <template-path> <json-values-path> [options]
 ```
 
-== code usage
+## code usage
 
 ```
 const Templite = require( 'node-templite' ).Templite
@@ -98,7 +98,7 @@ templite1.render( {} );         // Hello world
 templite1.render( values );     // Hello Henry
 ```
 
-== explaination of namespaces
+## explaination of namespaces
 
 The following namespaces are available:
 
@@ -112,7 +112,7 @@ local       | values from the current block       | local:rows
             | absolute scope to one of the above  | results.rows
 
 
-== explaination of blocks
+## explaination of blocks
 
 The value-key used with a block will determine what values are in the relative scope.  Values from root can be referenced usung their namespace.
 
@@ -126,7 +126,7 @@ For unnamed blocks the most inner block is assumed for all references and closin
 
 Closing tags. If your closing tag is mis-matched, ie named with un-named closing or un-named with closing named, you will also get an error.  Likewise is the named closing tag is mismatched with the expended closing tag you will also get an error.
 
-== explaination of partials
+## explaination of partials
 
 Partials are functions that processed the values, this can happen either before ('<') or after ('>') the value is rendered to the value that will replace the placeholder.  
 
@@ -134,7 +134,7 @@ Furthermore, the value-key before the partial will determine what values are in 
 
 both values and partials may include an optional namespace.  If the namespace is present then values or partials are found only within the scope of the namespace.  If no namespace is specified than it will go up the scope chain starting with the partial scope, local block scope, the values root scope and finally to the global scope.  If the namespace is not specified but the value=key is relative (starts with '.'), then the scope with be only either the partial or local block scope.  Partial scope only exists within a partial tag.
 
-== additional documentation and examples can be found at the templite website and the node-templite website, which also includes a jsdoc api reference manual.
+## additional documentation and examples can be found at the templite website and the node-templite website, which also includes a jsdoc api reference manual.
 
 MIT licensed.
 
